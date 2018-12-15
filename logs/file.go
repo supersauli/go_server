@@ -87,16 +87,15 @@ func (f *LogFile) Log(level int, format string, data ...interface{}) {
 	if level < f.Level {
 		return
 	}
+
 	timeNow := time.Now()
 	y, m, d := timeNow.Date()
 	h, mi, s := timeNow.Clock()
-	//f.Lock()
 	if f.canSwitchFile(y, int(m), d, h) {
 		f.switchNewFile(timeNow)
 	}
-	msg := fmt.Sprintf(format, data...)
-	ns := timeNow.Nanosecond()
-	logMsg := fmt.Sprintf("[%d:%d:%d:%d] %s", h, mi, s, ns, levelStr[level]) + msg
+
+	logMsg := GetLogHeard(timeNow, level) + fmt.Sprintf(format, data...)
 	writeSize, err := f.fileWriteNow.Write([]byte(logMsg))
 	if err == nil {
 		f.curFileSize += writeSize

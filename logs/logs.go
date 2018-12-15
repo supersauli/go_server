@@ -1,6 +1,9 @@
 package logs
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 const (
 	AppenderFile = iota
@@ -66,4 +69,11 @@ func (l *LogManage) Log(level int, msg string, data ...interface{}) {
 }
 func (l *LogManage) Init() {
 	l.appender = make(map[int]Logger)
+}
+
+func GetLogHeard(timeValue time.Time, log_level int) string {
+	y, m, d := timeValue.Date()
+	h, mi, s := timeValue.Clock()
+	ns := timeValue.Nanosecond()
+	return fmt.Sprintf("[%d:%d:%d:%d] %s", h, mi, s, ns, levelStr[log_level])
 }
