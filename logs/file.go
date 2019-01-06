@@ -90,7 +90,7 @@ func (f *LogFile) Log(level int, format string, data ...interface{}) {
 
 	timeNow := time.Now()
 	y, m, d := timeNow.Date()
-	h, mi, s := timeNow.Clock()
+	h, _, _ := timeNow.Clock()
 	if f.canSwitchFile(y, int(m), d, h) {
 		f.switchNewFile(timeNow)
 	}

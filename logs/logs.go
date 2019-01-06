@@ -72,7 +72,7 @@ func (l *LogManage) Init() {
 }
 
 func GetLogHeard(timeValue time.Time, log_level int) string {
-	y, m, d := timeValue.Date()
+	//y, m, d := timeValue.Date()
 	h, mi, s := timeValue.Clock()
 	ns := timeValue.Nanosecond()
 	return fmt.Sprintf("[%d:%d:%d:%d] %s", h, mi, s, ns, levelStr[log_level])

@@ -2,13 +2,14 @@ package test
 
 import (
 	"fmt"
+	"go_server/logs"
 	"net/http"
-	_ "net/http/pprof"
+
+	//	_ "net/http/pprof"
 	"os"
 	"runtime"
 	"runtime/debug"
 	"runtime/trace"
-	"test/logs"
 	"time"
 )
 

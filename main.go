@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"go_server/socket"
 	"net"
 	"time"
 )
@@ -39,6 +40,10 @@ func TestArr() {
 }
 
 func main() {
+
+	var so socket.ServerSocket
+	so.Init("", "127.0.0.1:2344")
+	so.Do()
 
 	TestArr()
 	//TestSprint()
