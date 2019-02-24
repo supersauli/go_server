@@ -39,7 +39,7 @@ func TestArr() {
 	fmt.Printf("%d\n", b[0])
 }
 
-func main() {
+func main()1 {
 
 	var so socket.ServerSocket
 	so.Init("", "127.0.0.1:2344")
